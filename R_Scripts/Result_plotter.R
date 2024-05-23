@@ -105,11 +105,11 @@ for (i in 1:length(indexes)) {
   results <- readRDS(paste("./Examensarbete/Long_term_sim/Repeated_shifts/", indexes[i], "_longstab_optimumshifts_pop.Rda", sep=""))
   optimi <- readRDS(paste("./Examensarbete/Long_term_sim/Repeated_shifts/", indexes[i], "_optimi.Rda", sep=""))
   png(file = paste("./Examensarbete/Long_term_sim/Plots/Repeated_shifts/Repeated_shifts_Gmean", indexes[i], ".png", sep=""))
-  plot(map_dbl(results, meanG), type = 'l', xlab = 'Generation', ylab = 'Genetic mean', main = paste("Genetic mean stabilizing selection with repeated shifts in optimum", indexes[i], sep = " "), cex.lab=1.5, cex.axis=1.5)
+  plot(map_dbl(results, meanG), type = 'l', xlab = 'Generation', ylab = 'Genetic mean', main = paste("Genetic mean stabilizing selection repeated shifts", indexes[i], sep = " "), cex.lab=1.5, cex.axis=1.5)
   lines(1:(length(optimi)), optimi, type = 'l', col = 'red')
   dev.off()
   png(file = paste("./Examensarbete/Long_term_sim/Plots/Repeated_shifts/Repeated_shifts_Gvar", indexes[i], ".png", sep=""))
-  plot(map_dbl(results, varG), type = 'l', xlab = 'Generation', ylab = 'Genetic variance', main = paste("Genetic variance stabilizing selection with repeated shifts in optimum", indexes[i], sep = " "), cex.lab=1.5, cex.axis=1.5)
+  plot(map_dbl(results, varG), type = 'l', xlab = 'Generation', ylab = 'Genetic variance', main = paste("Genetic variance stabilizing selection repeated shifts", indexes[i], sep = " "), cex.lab=1.5, cex.axis=1.5)
   dev.off()
   
   allele_freqs <- data.frame()
@@ -117,7 +117,7 @@ for (i in 1:length(indexes)) {
     allele_freqs <- rbind(allele_freqs, pull_qtl_freq(population, 1, simparam))
   }
   png(file = paste("./Examensarbete/Long_term_sim/Plots/Repeated_shifts/Repeated_shifts_A_freqs", indexes[i], ".png", sep=""), width = 697, height = 345)
-  matplot(1:length(results), allele_freqs, lty = 1, type = 'l', col = 'black', cex.lab=1.5, cex.axis=1.5, xlab = 'Generation', ylab = 'Allele frequency', main = paste('Allele frequencies repeated shifs', indexes[i], sep = ' '))
+  matplot(1:length(results), allele_freqs, lty = 1, type = 'l', col = 'black', cex.lab=1.5, cex.axis=1.5, xlab = 'Generation', ylab = 'Allele frequency', main = paste('Allele frequencies repeated shifts', indexes[i], sep = ' '))
   dev.off()
 
   a <- simparam$traits[[1]]$a
